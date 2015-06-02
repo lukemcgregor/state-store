@@ -1,9 +1,8 @@
-'use strict';
-var _ = require('underscore');
-var moment = require('moment');
-var StoreItem = require('./storeItem.js');
+import _ from 'underscore';
+import moment from 'moment';
+import StoreItem from './storeItem.js';
 
-module.exports = function (options) {
+export default function Store(options) {
 	var store = {
 		name: options.name,
 		options: options,

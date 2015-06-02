@@ -1,8 +1,7 @@
-'use strict';
-var _ = require('underscore');
-var moment = require('moment');
+import _ from 'underscore';
+import moment from 'moment';
 
-module.exports = function (key, initialState) {
+export default function StoreItem(key, initialState) {
 	var cacheItem = {
 		key: key,
 		data: null,

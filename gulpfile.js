@@ -9,6 +9,7 @@ var buffer = require('vinyl-buffer');
 var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash.assign');
+var esperanto = require('gulp-esperanto');
 
 // add custom browserify options here
 var customOpts = {
@@ -38,3 +39,11 @@ function bundle() {
     .pipe(sourcemaps.write('./')) // writes .map file
     .pipe(gulp.dest('./example/scripts/'));
 }
+
+
+gulp.task("dist", function () {
+  gulp.src('src/state-store.js')
+        .on('error', gutil.log.bind(gutil, 'Esperanto Error'))
+        .pipe(esperanto()
+        .pipe(gulp.dest('dist'));
+});

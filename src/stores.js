@@ -1,5 +1,3 @@
-'use strict';
-
 var api = {
 	registerStore: function (name, store) {
 		if (api[name]) {
@@ -26,4 +24,4 @@ var api = {
 	}
 };
 
-module.exports = api;
+export default api;
