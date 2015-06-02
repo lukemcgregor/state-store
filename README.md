@@ -4,7 +4,7 @@
 
 ## Installation
 ```sh
-$ npm install state-store
+$ npm install state-store --save
 ```
 
 
