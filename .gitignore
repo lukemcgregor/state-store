@@ -45,3 +45,4 @@ Temporary Items
 node_modules
 example/scripts
 dist
+*.log
