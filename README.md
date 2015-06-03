@@ -24,21 +24,21 @@ eg.
 
 ```javascript
 new Store({
-	updateFromRawData: function (data, store) {
-		if (data) {
-			store.update(data.Id, {
-				id: data.Id,
-				name: data.Name,
-				website: data.Website,
-				joinDate: data.JoinDate,
-				location: data.Location,
-				company: data.Company,
-				email: data.Email,
-				largePictureUrl: data.LargePictureUrl,
-				smallPictureUrl: data.SmallPictureUrl
-			});
+		updateFromRawData: function (data, store) {
+			if (data) {
+				store.update(data.Id, {
+					id: data.Id,
+					name: data.Name,
+					website: data.Website,
+					joinDate: data.JoinDate,
+					location: data.Location,
+					company: data.Company,
+					email: data.Email,
+					largePictureUrl: data.LargePictureUrl,
+					smallPictureUrl: data.SmallPictureUrl
+				});
+			}
 		}
-	}
 });
 ```
 
@@ -70,7 +70,7 @@ new Store({
 			}
 		});
 		xhr.send();
-	}
+		}
 });
 ```
 
@@ -83,10 +83,10 @@ When calling fetch you can specify an onData callback. This will be called immed
 
 ```javascript
 var item = myStore.fetch(id, {
-	onData: function(d){
+    onData: function(d){
 		//...
-	}
-});
+    }
+  });
 ```
 
 > TODO: improve this interaction.
