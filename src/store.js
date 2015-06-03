@@ -53,7 +53,9 @@ export default function Store(options) {
 				}
 			}
 			else if (fetchOptions && fetchOptions.onData) {
-				fetchOptions.onData(this.items[id].data);
+				if(this.items[id]){
+					fetchOptions.onData(this.items[id].data);
+				}
 			}
 			this._logDebug('Returning ' + (this.items[id].loading ? 'unloaded' : 'loaded') + ' entity for ' + id + ' with ' + (this.items[id].data ? 'data' : 'no data'));
 			return this.items[id];

@@ -12,10 +12,12 @@
     "type": "git",
     "url": "git+ssh://git@github.com/lukemcgregor/state-store.git"
   },
-  "licenses": [{
-    "type": "LGPLv3.0",
-    "url": "http://www.gnu.org/licenses/lgpl-3.0.txt"
-  }],
+  "licenses": [
+    {
+      "type": "LGPLv3.0",
+      "url": "http://www.gnu.org/licenses/lgpl-3.0.txt"
+    }
+  ],
   "browserify-shim": {
     "underscore": "global:_",
     "moment": "global:moment"
@@ -23,11 +25,20 @@
   "devDependencies": {
     "browserify": "^10.2.3",
     "browserify-shim": "^3.8.7",
+    "esperanto": "^0.7.2",
+    "fs": "0.0.2",
     "gulp": "^3.9.0",
-    "gulp-esperanto": "^0.2.0",
+    "gulp-file": "^0.2.0",
+    "gulp-filter": "^2.0.2",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.5",
     "lodash.assign": "^3.2.0",
+    "mkdirp": "^0.5.1",
+    "path": "^0.11.14",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.1"

@@ -1,15 +1,17 @@
-'use strict';
-
-var gulp = require('gulp');
-var watchify = require('watchify');
-var browserify = require('browserify');
-var browserifyShim = require('browserify-shim');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var gutil = require('gulp-util');
-var sourcemaps = require('gulp-sourcemaps');
-var assign = require('lodash.assign');
-var esperanto = require('gulp-esperanto');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const watchify = require('watchify');
+const browserify = require('browserify');
+const browserifyShim = require('browserify-shim');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const gutil = require('gulp-util');
+const sourcemaps = require('gulp-sourcemaps');
+const assign = require('lodash.assign');
+const esperanto = require('esperanto');
+const mkdirp = require('mkdirp');
+const fs = require('fs');
+const path = require('path');
 
 // add custom browserify options here
 var customOpts = {
@@ -41,9 +43,38 @@ function bundle() {
 }
 
 
-gulp.task("dist", function () {
-  gulp.src('src/state-store.js')
-        .on('error', gutil.log.bind(gutil, 'Esperanto Error'))
-        .pipe(esperanto()
-        .pipe(gulp.dest('dist'));
+gulp.task("dist", function (done) {
+  var exportFileName = 'state-store';
+  var exportVarName = 'stateStore';
+  var entryFileName = 'state-store';
+  var destinationFolder = 'dist'
+
+  esperanto.bundle({
+    base: 'src',
+    entry: 'state-store',
+  }).then(function(bundle) {
+    var res = bundle.toUmd({
+      sourceMap: true,
+      sourceMapSource: entryFileName + '.js',
+      sourceMapFile: exportFileName + '.js',
+      name: exportVarName
+    });
+
+    mkdirp.sync(destinationFolder);
+    fs.writeFileSync(path.join(destinationFolder, exportFileName + '.js'), res.map.toString());
+
+    $.file(exportFileName + '.js', res.code, { src: true })
+      .pipe($.plumber())
+      .pipe($.sourcemaps.init({ loadMaps: true }))
+      .pipe($.sourcemaps.write('./', {addComment: false}))
+      .pipe(gulp.dest(destinationFolder))
+      .pipe($.filter(['*', '!**/*.js.map']))
+      .pipe($.rename(exportFileName + '.min.js'))
+      .pipe($.sourcemaps.init({ loadMaps: true }))
+      .pipe($.uglify())
+      .pipe($.sourcemaps.write('./'))
+      .pipe(gulp.dest(destinationFolder))
+      .on('end', done);
+    })
+    .catch(done);
 });
