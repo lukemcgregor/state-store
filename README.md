@@ -21,7 +21,7 @@ new Store({
 			if (data) {
 				store.update(data.Id, {
 					id: data.Id,
-          name: data.Name,
+          				name: data.Name,
 					website: data.Website,
 					joinDate: data.JoinDate,
 					location: data.Location,
