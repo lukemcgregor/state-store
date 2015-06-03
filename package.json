@@ -1,7 +1,8 @@
 {
-  "version": "0.1.5",
+  "version": "0.1.7",
   "author": "Luke McGregor",
   "name": "state-store",
+  "description": "A caching store for serverside state in a clientside application",
   "private": false,
   "main": "./src/state-store.js",
   "engines": {
@@ -11,6 +12,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com/lukemcgregor/state-store.git"
   },
+  "licenses": [{
+    "type": "LGPLv3.0",
+    "url": "http://www.gnu.org/licenses/lgpl-3.0.txt"
+  }],
   "browserify-shim": {
     "underscore": "global:_",
     "moment": "global:moment"
