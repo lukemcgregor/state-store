@@ -1,5 +1,5 @@
 {
-  "version": "0.1.9",
+  "version": "0.1.10",
   "author": "Luke McGregor",
   "name": "state-store",
   "description": "A caching store for serverside state in a clientside application",

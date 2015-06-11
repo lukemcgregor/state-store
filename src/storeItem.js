@@ -49,8 +49,8 @@ export default function StoreItem(key, initialState) {
 			var oldData = this.data;
 			this.data = this.pesimisticData;
 			_.each(this.subscribers, function (onChange) {
-				if (!_.isEqual(oldData, data)) {
-					onChange(oldData, data);
+				if (!_.isEqual(oldData, this.data)) {
+					onChange(oldData, this.data);
 				}
 			}.bind(this));
 		}
